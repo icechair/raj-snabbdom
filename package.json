@@ -14,8 +14,8 @@
     }
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Martin Gaben <martin.gabel@icechair.de>",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https:/github.com/icechair/raj-snabbdom"
