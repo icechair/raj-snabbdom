@@ -1,0 +1,36 @@
+{
+  "name": "raj-snabbdom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/**/*.js | tap-spec",
+    "coverage": "nyc --check-coverage --all --branches 100 --functions 100 --lines 100 --statements 100 npm test",
+    "lint": "prettier **/*.js --write &&  eslint . --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run lint && npm run coverage"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^5.6.1",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "husky": "^1.1.1",
+    "jsdom": "^12.2.0",
+    "nyc": "^13.0.1",
+    "prettier": "^1.14.3",
+    "raj": "^1.0.0",
+    "snabbdom": "^0.7.2",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.9.1"
+  },
+  "peerDependencies": {
+    "raj": "^1.0.0",
+    "snabbdom": "^0.7.2"
+  }
+}
