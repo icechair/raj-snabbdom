@@ -18,7 +18,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https:/github.com/icechair/raj-snabbdom"
+    "url": "https://github.com/icechair/raj-snabbdom"
   },
   "devDependencies": {
     "eslint": "^5.6.1",
