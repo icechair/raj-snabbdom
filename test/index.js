@@ -25,12 +25,13 @@ test(`display/render test`, t => {
 test('program test', t => {
   t.plan(5)
   const selector = 'div#root'
+  const render = display(selector, patch)
   const app = {
     init: [0],
     update: () => [],
     view: state => [h('p', `state is ${state}`)]
   }
-  let prog = program(selector, patch, () => app)
+  let prog = program(render, () => app)
   t.deepEqual(
     Object.keys(prog),
     ['init', 'update', 'view', 'done'],
@@ -51,6 +52,6 @@ test('program test', t => {
   prog.done()
   t.equal(root.innerHTML, '', '`proc.done` should tear down the app dom')
   const withDone = { ...app, done: () => t.pass('done should be triggered') }
-  prog = program(selector, patch, () => withDone)
+  prog = program(render, () => withDone)
   prog.done()
 })

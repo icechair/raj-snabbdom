@@ -20,12 +20,11 @@ const display = (selector, patch) => {
 
 /**
  *
- * @param {string} selector query selector with tag eg `div#root` instead of just `#root`
+ * @param {Renderer} render render function
  * @param {Patcher} patch patch function returned by `snabbdom.init()`
  * @param {() => Program} createApp
  */
-const program = (selector, patch, createApp) => {
-  const render = display(selector, patch)
+const program = (render, createApp) => {
   const app = createApp()
   const { view, done } = app
   return {
