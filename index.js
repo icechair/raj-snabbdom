@@ -7,7 +7,7 @@ var { toVNode } = require('snabbdom/tovnode')
  */
 const display = (selector, patch) => {
   let root
-  if (typeof document !== undefined) {
+  if (typeof document !== 'undefined') {
     root = toVNode(document.querySelector(selector))
     return next => {
       root = patch(root, h(selector, next))

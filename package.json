@@ -6,7 +6,7 @@
   "types": "index.d.ts",
   "scripts": {
     "test": "tape test/**/*.js | tap-spec",
-    "coverage": "nyc --check-coverage --all --branches 100 --functions 100 --lines 100 --statements 100 npm test",
+    "coverage": "nyc --check-coverage --all npm test",
     "lint": "prettier **/*.js --write &&  eslint . --fix"
   },
   "husky": {
