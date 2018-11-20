@@ -1,27 +1,26 @@
-const { h } = require('snabbdom')
-/**
- * @typedef {import("snabbdom/vnode").VNode} VNode
- * @typedef {(oldNode: VNode | Element, vnode: VNode) => VNode} Patcher
- * @typedef {(next: string| VNode| VNode[]) => void} Renderer
- * @typedef {{init: [], update: () => [], view: () => VNode} Program
- */
-
+const { h } = require('snabbdom/h')
+var { toVNode } = require('snabbdom/tovnode')
 /**
  * @param {string} selector query selector with tag eg `div#root` instead of just `#root`
- * @param {Patcher} patch patch function returned by `snabbdom.init()`
- * @returns {Renderer} render function which takes the next viewdata and patches the virtual dom
+ * @param {Patch} patch patch function returned by `snabbdom.init()`
+ * @returns {Render} render function which takes the next viewdata and patches the virtual dom
  */
 const display = (selector, patch) => {
-  let root = document.querySelector(selector)
-  return next => {
-    root = patch(root, h(selector, next))
+  let root
+  if (typeof document !== undefined) {
+    root = toVNode(document.querySelector(selector))
+    return next => {
+      root = patch(root, h(selector, next))
+      return root
+    }
   }
+  return next => next
 }
 
 /**
  *
- * @param {Renderer} render render function
- * @param {Patcher} patch patch function returned by `snabbdom.init()`
+ * @param {Render} render render function
+ * @param {Patch} patch patch function returned by `snabbdom.init()`
  * @param {() => Program} createApp
  */
 const program = (render, createApp) => {

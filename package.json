@@ -3,6 +3,7 @@
   "version": "0.1.1",
   "description": "",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "test": "tape test/**/*.js | tap-spec",
     "coverage": "nyc --check-coverage --all --branches 100 --functions 100 --lines 100 --statements 100 npm test",
